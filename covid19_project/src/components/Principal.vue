@@ -84,7 +84,13 @@
       Resetear Formulario
     </v-btn>
 
-    
+    <v-btn
+      color="warning"
+      @click="predictiveAnalysis"
+    >
+      Ejecutar Proyección      
+    </v-btn>
+    <v-spacer></v-spacer>
 
     <v-data-table
       :headers="headers"
@@ -92,14 +98,33 @@
       :items-per-page="5"
       class="elevation-1"
     ></v-data-table>
+
+    <v-spacer></v-spacer>
+
+    <pure-vue-chart
+      :points= y
+      :show-y-axis="true"
+      :show-x-axis="true"
+      :width="1300"
+      :height="450"
+      :show-values="true"
+      :show-trend-line="true"
+      :trend-line-width="7"
+      trend-line-color="lightblue"
+      
+    />
   </v-form>
 </template>
 
 <script>
 
 import axios from 'axios'
+import PureVueChart from 'pure-vue-chart';
 
   export default {
+    components: {
+      PureVueChart,
+      },
     data: () => ({
       //date
       to_date: new Date().toISOString().substr(0, 10),
@@ -145,12 +170,16 @@ import axios from 'axios'
 
       //Data
       content:[],
-      datas: []
+      datas: [],
+
+      //Graphic
+      y:[],
     }),
 
     methods: {
       reset () {
         this.dataSet = [];
+        this.y = [];
       },
       //Return country and date interval
        getData(){         
@@ -176,12 +205,33 @@ import axios from 'axios'
 
       workData(){        
         var dataSetLocal =  {date:'',country: '',active: 0,deaths: 0,recovered: 0,};
+        var yLocal = {label: '', value: 0}
           dataSetLocal.date = this.datas.date;
           dataSetLocal.country = this.datas.name;
           dataSetLocal.active = this.datas.today_confirmed;
           dataSetLocal.deaths = this.datas.today_deaths;
-          dataSetLocal.recovered = this.datas.today_recovered         
-        this.dataSet.push(dataSetLocal);        
+          dataSetLocal.recovered = this.datas.today_recovered   
+
+          yLocal.label = this.datas.date;
+          yLocal.value = this.datas.today_confirmed;          
+          
+        this.dataSet.push(dataSetLocal); 
+        this.y.push(yLocal);       
+      },
+
+      predictiveAnalysis(){
+        var n = this.y.length;
+        var x = this.y.value;
+        var y = this.y.label;
+        debugger
+        // var sumx = sum(x) 
+        // var sumy = sum(y)
+        // var sumx2 = sum(x*x)
+        // var sumy2 = sum(y*y)
+        // var sumxy = sum(x*y)
+        // var promx = sumx/n
+        // var promy = sumy/n
+
       }
     },
   }
