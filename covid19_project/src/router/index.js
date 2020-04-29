@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld.vue'
+import Principal from '@/components/Principal.vue';
+import Testing from '@/components/Testing.vue';
 import * as firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/database";
@@ -14,13 +15,19 @@ export default new Router({
   routes: [
     {
         path: '*',
-        redirect: '/helloword',
+        redirect: '/principal',
     },
     {
-        path: '/helloword',
-        name: 'helloword',
-        component: HelloWorld,
+        path: '/principal',
+        name: 'principal',
+        component: Principal,
         props: { firebase }
-    },    
+    },
+    {
+      path: '/testing',
+      name: 'testing',
+      component: Testing,
+      props: { firebase }
+  },     
   ]
 })
