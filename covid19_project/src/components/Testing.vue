@@ -1,26 +1,67 @@
 <template>
-  <div class="text-center ma-2">
-    <v-btn dark @click="snackbar = true">Open Snackbar</v-btn>
-    <v-snackbar
-      v-model="snackbar"
-    >
-      {{ text }}
-      <v-btn
-        color="pink"
-        text
-        @click="snackbar = false"
-      >
-        Close
-      </v-btn>
-    </v-snackbar>
-  </div>
-</template>
+  <v-form>
+    <v-container>
+      <v-row>
 
-<script>
-  export default {
-    data: () => ({
-      snackbar: false,
-      text: 'Hello, I\'m a snackbar',
-    }),
-  }
-</script>
+        <v-col cols="12" sm="6" md="3">
+          <v-text-field
+            label="Regular"
+          ></v-text-field>
+        </v-col>
+
+        <v-col cols="12" sm="6" md="3">
+          <v-text-field
+            label="Regular"
+            placeholder="Placeholder"
+          ></v-text-field>
+        </v-col>
+
+        <v-col cols="12" sm="6" md="3">
+          <v-text-field
+            label="Solo"
+            solo
+          ></v-text-field>
+        </v-col>
+
+        <v-col cols="12" sm="6" md="3">
+          <v-text-field
+            label="Solo"
+            placeholder="Placeholder"
+            solo
+          ></v-text-field>
+        </v-col>
+
+        <v-col cols="12" sm="6" md="3">
+          <v-text-field
+            label="Filled"
+            filled
+          ></v-text-field>
+        </v-col>
+
+        <v-col cols="12" sm="6" md="3">
+          <v-text-field
+            label="Filled"
+            placeholder="Placeholder"
+            filled
+          ></v-text-field>
+        </v-col>
+
+        <v-col cols="12" sm="6" md="3">
+          <v-text-field
+            label="Outlined"
+            outlined
+          ></v-text-field>
+        </v-col>
+
+        <v-col cols="12" sm="6" md="3">
+          <v-text-field
+            label="Outlined"
+            placeholder="Placeholder"
+            outlined
+          ></v-text-field>
+        </v-col>
+
+      </v-row>
+    </v-container>
+  </v-form>
+</template>
