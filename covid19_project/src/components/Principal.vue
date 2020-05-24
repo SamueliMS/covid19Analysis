@@ -4,6 +4,12 @@
     v-model="valid"
     lazy-validation
   >
+  <v-btn
+      color="warning"
+      @click="goPage"
+    >
+      Ir a localización de hospitales      
+    </v-btn>
   <v-container fluid>
     <v-row justify="space-around">
       
@@ -214,6 +220,9 @@ import PureVueChart from 'pure-vue-chart';
     }),
 
     methods: {
+      goPage() {
+              this.$router.push('/testing');
+        },
       reset () {
         this.dataSet = [];
         this.y = [];

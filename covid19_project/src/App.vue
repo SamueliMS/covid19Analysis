@@ -45,6 +45,7 @@
 </template>
 
 <script>
+  import Map from './components/Testing';
   export default {
     data: () => ({
       drawer: null,
@@ -54,6 +55,11 @@
         { text: 'Audience', icon: 'mdi-account' },
         { text: 'Conversions', icon: 'mdi-flag' },
       ],
+
+      name: 'App',
+      components: {
+        Map
+      }
     }),
     
   }
